@@ -1,32 +1,94 @@
-<!--*****************RESUME******************--!>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<!--TITLE-->
-<p>RESUME</p>
-<!--ICON-->
-<p></p>
-<!--META TAGS-->
-<p></p>
-<!--GOOGLE FONTS-->
-<p></p>
-<!--PLUGIN-->
-<p></p>
-<!--FONT AWESOME-->
-<p></p>
-<!--EXTERNAL CSS-->
-<p></p>
-<div class="container">
-<section class="section_left"><center><img
-src="https://yandex.ru/images/search?from=tabbar&img_url=https%3A%2F%2Fcatalog.sodstr.ru%2Fexchange%2F7802321259%2F1332_1.jpg&lr=213&pos=7&rpt=simage&text=фото%20станкин" alt="AUTHOR" />
-<h1 class="title">Щербак Анастасия </h1>
-</center><hr />
-<h5 class="sub-title">CONTACT INFO</h5>
-<ul>
-<li>+7 (920) 567-88-99</li>
-<li>shcherbak063@yandex.ru</li>
-<li>МГТУ Станкин, гр. АДБ-22-06</li>
-<li>Вадковский переулок, д.1</li>
-</ul>
-</section>
-</div>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мое резюме</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <div class="resume-container">
+        <h1>Мое резюме</h1>
+        
+        <div class="profile">
+            <img src="ню.png" alt="Мое фото" class="profile-img">
+            <div class="profile-info">
+                <h2 id="firstName">Иван</h2>
+                <p id="lastName">Иванов</p>
+                <p>Возраст: <span id="age">30</span> лет</p>
+                <p>Профессия: Веб-разработчик</p>
+            </div>
+        </div>
+
+        <div class="edit-form">
+            <div class="form-group">
+                <label for="newLastName">Изменить фамилию:</label>
+                <input type="text" id="newLastName" placeholder="Введите новую фамилию">
+            </div>
+            <button class="btn" onclick="changeLastName()">Изменить</button>
+            <button class="btn btn-random" onclick="changeBgColor()">Случайный цвет фона</button>
+        </div>
+
+        <div class="course-summary">
+            <h2>Конспект курса</h2>
+            <p class="learned-ok">Парные теги.</p>
+            <p class="learned-ok">Одиночные теги.</p>
+            <p class="learned-ok">Атрибуты тегов.</p>
+            <p class="learned-ok">Инлайновые (встроенные) стили.</p>
+            <p class="learning-in-progress">Внешние стили.</p>
+            <p class="not-learned">Стилизация по классам.</p>
+        </div>
+    </div>
+
+    <script>
+        // Функция для изменения фамилии
+        function changeLastName() {
+            const newLastName = document.getElementById('newLastName').value;
+            if (newLastName.trim() !== '') {
+                document.getElementById('lastName').textContent = newLastName;
+                document.getElementById('newLastName').value = '';
+                alert('Фамилия успешно изменена!');
+            } else {
+                alert('Пожалуйста, введите новую фамилию');
+            }
+        }
+
+        // Функция для изменения цвета фона
+        function changeBgColor() {
+            const colors = ['#f1c40f', '#e74c3c', '#9b59b6', '#1abc9c', '#3498db', '#e67e22'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.body.style.backgroundColor = randomColor;
+        }
+
+        // Взаимодействие с пользователем (задание 1)
+        if (confirm('Доброго времени суток! У этой страницы есть к вам вопрос. Вы готовы ответить?')) {
+            const name = prompt('Как вас зовут?', 'Введите сюда ваше имя');
+            alert("Ваше имя - " + name);
+            
+            // Индивидуальное задание 2
+            const admin = name;
+            alert("Значение переменной admin: " + admin);
+        }
+        alert("Спасибо, что уделили время");
+
+        // Индивидуальное задание 3 (проверка возраста)
+        function askAge() {
+            let age;
+            do {
+                age = prompt('Пожалуйста, введите ваш возраст:');
+                if (age === null) continue; // Если нажата Отмена, цикл продолжится
+                
+                const isCorrect = confirm(`Вы ввели возраст: ${age}. Это правильно?`);
+                if (isCorrect) {
+                    document.getElementById('age').textContent = age;
+                    alert("Спасибо! Ваш возраст принят.");
+                    return age;
+                }
+            } while (true);
+        }
+        
+        askAge(); // Запускаем проверку возраста
+    </script>
+</body>
+</html>
